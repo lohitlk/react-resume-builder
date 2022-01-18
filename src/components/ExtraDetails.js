@@ -3,6 +3,7 @@ import { Button, Card, Col, Form, Row } from 'react-bootstrap'
 import { withRouter } from "react-router-dom";
 
 
+
 function ExtraDetails(props) {
     const [extra, setextra] = useState({
         skill1:"",
@@ -27,6 +28,11 @@ function ExtraDetails(props) {
     }
     let submitdata =()=>{
         props.dataPush(extra)
+        
+    }
+    let addProduct=()=>{
+        props.history.push("/submit")
+        props.isSubmit(true)
     }
     return (
         <div>
@@ -90,7 +96,7 @@ function ExtraDetails(props) {
                         <Button md={12} style={{background:"red", width:"90px", margin:"8px"}} onClick={()=>{props.history.goBack()}}>Back</Button>
                         <Button md={12} style={{background:"red", width:"90px", margin:"8px"}} onClick={submitdata}>Submit</Button>
                     </Card.Body>
-                    <Card.Footer className="text-center"><Button md={12} varient="primary">Download Resume</Button></Card.Footer>
+                    <Card.Footer className="text-center"><Button md={12} onClick={()=>{addProduct()}} varient="primary">Download Resume</Button></Card.Footer>
                 </Card>
             </div>
         </div>
