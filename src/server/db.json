@@ -2,18 +2,73 @@
   "resumedata": [
     
       {
-        "skill1": "fasdf",
-        "skill2": "",
+        "firstname": "lohit",
+        "lastname": "kumar",
+        "email": "lohithk851@gmail.com",
+        "phoneno": "7483250153",
+        "weblink": "asdf",
+        "gitlink": "",
+        "twitterlink": "",
+        "instalink": "",
+        "linkedin": "",
+        "facebook": ""
+      },
+      {
+        "college": "cit",
+        "colstart": "2022-01-02",
+        "colend": "2022-01-02",
+        "colqualification": "asdf",
+        "coldescription": "asdfads",
+        "school": "",
+        "schstart": "",
+        "schend": "",
+        "schqualification": "",
+        "schdescription": ""
+      },
+      {
+        "college": "cit",
+        "colstart": "2022-01-02",
+        "colend": "2022-01-09",
+        "colqualification": "asdf",
+        "coldescription": "asdf",
+        "school": "",
+        "schstart": "",
+        "schend": "",
+        "schqualification": "",
+        "schdescription": ""
+      },
+      {
+        "title1": "aasdf",
+        "link1": "asdf",
+        "description1": "asdf",
+        "title2": "",
+        "link2": "",
+        "description2": ""
+      },
+      {
+        "institute1": "asdf",
+        "position1": "asdf",
+        "duration1": "5",
+        "description1": "asdf",
+        "institute2": "",
+        "position2": "",
+        "duration2": "",
+        "description2": ""
+      },
+      {
+        "skill1": "asdf",
+        "skill2": "asdf",
         "skill3": "",
         "skill4": "",
         "skill5": "",
         "skill6": "",
-        "interest1": "asdfsdf",
-        "interest2": "",
+        "interest1": "asdf",
+        "interest2": "asdf",
         "interest3": "",
         "interest4": "",
         "interest5": "",
         "interest6": ""
       }
+    
   ]
 }

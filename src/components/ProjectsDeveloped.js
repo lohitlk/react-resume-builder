@@ -11,7 +11,44 @@ function ProjectsDeveloped(props) {
         link2:"",
         description2:"",
     })
-    
+    const [title1Error, settitle1Error] = useState("")
+    const [link1Error, setlink1Error] = useState("")
+    const [description1Error, setdescription1Error] = useState("")
+    const validateProject = () => {
+        if(project.title1){
+        if (project.title1 !== null || project.title1 !== "") {
+            settitle1Error("")
+          return true;
+        }}
+        else {
+            settitle1Error("*required")
+        }
+        return false;
+      }
+      const validatelink = () => {
+        if(project.link1){
+        if (project.link1 !== null || project.link1 !== "") {
+            setlink1Error("")
+          return true;
+        }}
+        else {
+            setlink1Error("*required")
+        }
+        return false;
+      }
+      const validatdescription = () => {
+        if(project.description1){
+        if (project.description1 !== null || project.description1 !== "") {
+            setdescription1Error("")
+          return true;
+        }}
+        else {
+            setdescription1Error("* required")
+        }
+        return false;
+      }
+
+
     let changedata=(event)=>{
         setproject({
             ...project,
@@ -19,8 +56,10 @@ function ProjectsDeveloped(props) {
         })
     }
     let goExp = ()=>{
+        if(validateProject() && validatelink() && validatdescription()){
         props.history.push("/Experience")
         props.dataPush(project)
+    }
     }
     return (
         <div>
@@ -31,14 +70,17 @@ function ProjectsDeveloped(props) {
                         <h4>Project1</h4>
                             <Form.Group controlId="formGridTitle">
                             <Form.Control type="text"  name="title1" placeholder="Title *" value={project.title1} onChange={changedata}/>
+                            {title1Error && <div className="errormsg">{title1Error}</div>}
                             </Form.Group><br/>
 
                             <Form.Group controlId="formGridPassword">
                                 <Form.Control type="text" name='link1' placeholder="Link *" value={project.link1} onChange={changedata} />
+                                {link1Error && <div className="errormsg">{link1Error}</div>}
                             </Form.Group><br/>
 
                             <Form.Group controlId="formGridPassword">
                                 <Form.Control type="text" name='description1' placeholder="Description *" value={project.description1} onChange={changedata} />
+                                {description1Error && <div className="errormsg">{description1Error}</div>}
                             </Form.Group>
                             <br />
                         <hr /><br />

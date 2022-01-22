@@ -15,7 +15,59 @@ function Personal(props) {
     linkedin: "",
     facebook: "",
   })
-  
+  const [firstnameError, setfirstnameError] = useState("")
+  const [lastnameError, setlastnameError] = useState("")
+  const [emailError, setemailError] = useState("")
+  const [phoneError, setphoneError] = useState("")
+
+  const validateFirstname = () => {
+    if(personal.firstname){
+    if (personal.firstname !== null || personal.firstname !== "") {
+      setfirstnameError("")
+      return true;
+    }}
+    else {
+      setfirstnameError("*Firstname is required")
+    }
+    return false;
+  }
+  const validateLastname = () => {
+    if(personal.lastname){
+    if (personal.lastname !== null || personal.lastname !== "") {
+      setlastnameError("")
+      return true;
+    }}
+    else {
+      setlastnameError("*lastname is required")
+    }
+    return false;
+  }
+  const validateNumber = () => {
+    if(personal.phoneno){
+    if (personal.phoneno !== null || personal.phoneno !== "") {
+      setphoneError("")
+      return true;
+    }}
+    else {
+      setphoneError("*phone number is required")
+    }
+    return false;
+  }
+  const validateEmail = () => {
+    if (personal.email) {
+      let regex = /^\S+@\S+$/;
+      if (regex.test(personal.email)) {
+        setemailError("");
+        return true;
+      } else {
+        setemailError("*Enter valid Email-id");
+      }
+    } else {
+      setemailError("*Email-id is Required");
+    }
+    return false;
+  };
+
   let changedata = (event) => {
     setpersonal({
       ...personal,
@@ -25,8 +77,14 @@ function Personal(props) {
 
 
   let goEdu = () => {
-    props.history.push("/Education")
-    props.dataPush(personal)
+    validateFirstname()
+    validateLastname()
+    validateNumber()
+    validateEmail()
+    if (validateFirstname() && validateLastname() && validateNumber() && validateEmail()) {
+      props.history.push("/Education")
+      props.dataPush(personal)
+    }
   }
   return (
     <div style={{ padding: "20px" }}>
@@ -37,10 +95,12 @@ function Personal(props) {
             <Col md={6} xs={4}>
               <Form.Group as={Col} controlId="firstname">
                 <Form.Control type="text" name="firstname" placeholder="First Name *" className="" value={personal.firstname} onChange={changedata} />
+                {firstnameError && <div className="errormsg">{firstnameError}</div>}
               </Form.Group><br />
 
               <Form.Group as={Col} controlId="Email">
                 <Form.Control type="email" name="email" placeholder="Email *" value={personal.email} onChange={changedata} />
+                {emailError && <div className="errormsg">{emailError}</div>}
               </Form.Group><br />
 
               <Form.Group as={Col} controlId="weblink">
@@ -59,10 +119,12 @@ function Personal(props) {
             <Col md={6} xs={4}>
               <Form.Group as={Col} controlId="lastname">
                 <Form.Control type="text" name='lastname' placeholder="Last Name *" value={personal.lastname} onChange={changedata} />
+                {lastnameError && <div className="errormsg">{lastnameError}</div>}
               </Form.Group><br />
 
               <Form.Group as={Col} controlId="phoneno">
                 <Form.Control type="text" name='phoneno' placeholder="Phone Number" value={personal.phoneno} onChange={changedata} />
+                {phoneError && <div className="errormsg">{phoneError}</div>}
               </Form.Group><br />
 
               <Form.Group as={Col} controlId="gitlink">

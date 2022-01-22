@@ -21,11 +21,11 @@ function App() {
   
   console.log(submit)
   const [resumedata, setresumedata] = useState([])
+  console.log(resumedata)
   let dataPush = (reciveddata)=>{
     let dataCopy = [...resumedata];
     dataCopy.push(reciveddata);
     setresumedata(dataCopy)
-
   }
 
   console.log(resumedata);
@@ -37,7 +37,7 @@ function App() {
 
   let fetchProducts= async()=>{
     try{
-        const response= await axios.post("http://localhost:3004/resumedata",resumedata);
+        const response= await axios.post("http://localhost:3001/resumedata",resumedata);
         console.log(response.data);
         if(response.data.error) {
             const errMessage=response.data.message;

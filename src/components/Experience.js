@@ -14,6 +14,42 @@ function Experience(props) {
         description2:"",
     })
 
+    const [institte1Error, setinstitte1Error] = useState("")
+    const [position1Error, setposition1Error] = useState("")
+    const [duration1Error, setduration1Error] = useState("")
+    const validateinstitute = () => {
+        if(experience.institute1){
+        if (experience.institute1 !== null || experience.institute1 !== "") {
+            setinstitte1Error("")
+          return true;
+        }}
+        else {
+            setinstitte1Error("*required")
+        }
+        return false;
+      }
+      const validateposition = () => {
+        if(experience.position1){
+        if (experience.position1 !== null || experience.position1 !== "") {
+            setposition1Error("")
+          return true;
+        }}
+        else {
+            setposition1Error("*required")
+        }
+        return false;
+      }
+      const validateduration = () => {
+        if(experience.duration1){
+        if (experience.duration1 !== null || experience.duration1 !== "") {
+            setduration1Error("")
+          return true;
+        }}
+        else {
+            setduration1Error("*required")
+        }
+        return false;
+      }
     let changedata =(event)=>{
         setexperience({
             ...experience,
@@ -21,8 +57,10 @@ function Experience(props) {
         })
     }
     let goExtra = () => {
+        if(validateinstitute() && validateposition() && validateduration()){
         props.history.push("/Extras")
         props.dataPush(experience)
+        }
     }
     return (
         <div>
@@ -34,14 +72,16 @@ function Experience(props) {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridInstitute">
                                 <Form.Control type="text" name='institute1' placeholder="Institue/Organization *" value={experience.institute1} onChange={changedata}/>
-                             
+                                {institte1Error && <div className="errormsg">{institte1Error}</div>}
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridposition">
                                 <Form.Control type="text" name='position1' placeholder="Position *" value={experience.position1} onChange={changedata} />
+                                {position1Error && <div className="errormsg">{position1Error}</div>}
                             </Form.Group>
                             <Form.Group as={Col} controlId="formGridduration">
                                 <Form.Control type="number" name='duration1' placeholder="Duration *" value={experience.duration1} onChange={changedata}/>
+                                {duration1Error && <div className="errormsg">{duration1Error}</div>}
                             </Form.Group>
                         </Row><br />
                         <Form.Group as={Col} controlId="formGriddescription">
